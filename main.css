@@ -60,3 +60,24 @@ footer {
     width: 10vh;
 }
 
+#boton {
+    position: absolute;
+    top: 50%;
+    left: 2.2vh;
+    transform: translateY(-50%);
+    width: 10vh;
+    background-color: #aceeff;
+    color: #003392;
+    cursor: pointer;
+}
+
+#boton2 {
+    position: absolute;
+    top: 50%;
+    left: 14vh;
+    transform: translateY(-50%);
+    width: 10vh;
+    background-color: #aceeff;
+    color: #003392;
+    cursor: pointer;
+}
