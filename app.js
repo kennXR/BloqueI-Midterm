@@ -188,4 +188,31 @@ function animate() {
     renderer.render(scene, camera);
 }
 
+// --- Evento CLICK sobre el canvas ---
+const minScale = 1;
+const maxScale = 3;
+
+canvas.addEventListener("click", () => {
+  // Si ya está grande, vuelve al tamaño original
+  if (mesh.scale.x >= maxScale) {
+    gsap.to(mesh.scale, {
+      x: minScale,
+      y: minScale,
+      z: minScale,
+      duration: 1,
+      ease: "bounce.out"
+    });
+  } 
+  // Si está pequeño, crece hasta el máximo
+  else {
+    gsap.to(mesh.scale, {
+      x: maxScale,
+      y: maxScale,
+      z: maxScale,
+      duration: 1,
+      ease: "bounce.out"
+    });
+  }
+});
+
 animate();
