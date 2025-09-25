@@ -17,7 +17,7 @@ const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1
 
 // 3.1 Configurar mesh.
 //const geo = new THREE.TorusKnotGeometry(1, 0.35, 128, 5, 2);
- const geo = new THREE.SphereGeometry(1.5, 128, 128);
+ const geo = new THREE.TorusGeometry(1.5, 0.5, 32, 100);
 
 const material = new THREE.MeshStandardMaterial({
     color: "#ffffff",
@@ -67,12 +67,10 @@ const loader = new THREE.TextureLoader(manager);
 
 // 3. Cargamos texturas guardadas en el folder del proyecto.
 const tex = {
-   albedo: loader.load('./assets/texturas/bricks/albedo.png'),
-   ao: loader.load('./assets/texturas/bricks/ao.png'),
-   metalness: loader.load('./assets/texturas/bricks/metallic.png'),
-   normal: loader.load('./assets/texturas/bricks/normal.png'),
-   roughness: loader.load('./assets/texturas/bricks/roughness.png'),
-   displacement: loader.load('./assets/texturas/bricks/displacement.png'),
+   albedo: loader.load('./assets/texturas/snow/snowdrift1_albedo.png'),
+   ao: loader.load('./assets/texturas/snow/snowdrift1_ao.png'),
+   normal: loader.load('./assets/texturas/snow/snowdrift1_Normal-ogl.png'),
+   displacement: loader.load('./assets/texturas/snow/snowdrift1_Height.png'),
 };
 
 // 4. Definimos variables y la función que va a crear el material al cargar las texturas.
@@ -82,11 +80,11 @@ function createMaterial() {
    pbrMaterial = new THREE.MeshStandardMaterial({
        map: tex.albedo,
        aoMap: tex.ao,
-       metalnessMap: tex.metalness,
+       metalness: 0.0,
        normalMap: tex.normal,
-       roughnessMap: tex.roughness,
+       roughness: 0.8,
        displacementMap: tex.displacement,
-       displacementScale: 0.4,
+       displacementScale: 0.9,
        side: THREE.FrontSide,
        // wireframe: true,
    });
