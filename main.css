@@ -11,15 +11,19 @@
     box-sizing: border-box;
     font-family: "Formula", sans-serif;
     text-transform: uppercase;
-    color: aqua;
+    color: rgb(207, 255, 255);
+    overflow: hidden;
 }
+
+
 
 #lienzo {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background-color: #2020cc;
+    background-color: #ffffff;
+    overflow: hidden;
 }
 
 header {
@@ -29,6 +33,8 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .title {
@@ -45,6 +51,8 @@ footer {
     bottom: 0; left: 0;
     width: 100%;
     mix-blend-mode: luminosity;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .subtitle {
@@ -60,24 +68,119 @@ footer {
     width: 10vh;
 }
 
-#boton {
-    position: absolute;
-    top: 50%;
-    left: 2.2vh;
-    transform: translateY(-50%);
+/* Estilo general para todos los botones */
+.materialSwitch {
+    position: relative;
+    display: block;
     width: 10vh;
-    background-color: #aceeff;
-    color: #003392;
+    height: 5vh;
     cursor: pointer;
+    border: none;
+    font-family: "Formula", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2vh; /* Texto más pequeño */
+    font-weight: normal; /* Menos bold */
+    z-index: 1000;
+    margin-bottom: 1vh;
+    transition: all 0.3s ease;
+    border-radius: 0.5vh;
+    box-shadow: 0 0.2vh 0.5vh rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgba(255, 255, 255, 0.7); /* Texto más sutil */
+    text-shadow: 0 0.1vh 0.2vh rgba(0,0,0,0.6); /* Sombra más sutil */
+    outline: none;
 }
 
-#boton2 {
-    position: absolute;
-    top: 50%;
-    left: 14vh;
-    transform: translateY(-50%);
-    width: 10vh;
-    background-color: #aceeff;
-    color: #003392;
-    cursor: pointer;
+.materialSwitch:hover {
+    transform: translateY(-0.2vh);
+    box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.4);
 }
+
+.materialSwitch:active {
+    transform: translateY(0.1vh);
+    box-shadow: 0 0.1vh 0.3vh rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedores de botones */
+.buttonContainer {
+    position: absolute;
+    top: 20vh;
+    z-index: 1000;
+}
+
+#leftButtons {
+    left: 4vh;
+}
+
+#rightButtons {
+    right: 4vh;
+}
+
+#topButtons {
+    top: 8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vh;
+    max-width: 80vw;
+}
+
+.topButtons .materialSwitch {
+    margin-bottom: 0;
+    width: 8vh;
+    height: 4vh;
+    font-size: 1.0vh; /* Texto más pequeño para botones superiores */
+}
+
+/* Estilos individuales para cada botón */
+#iceButton { background-image: url("./assets/texturas/ice/iced-over-ground7-albedo.png"); }
+
+#marbleButton { background-image: url("./assets/texturas/marble/white-marble_albedo.png"); }
+
+#lavaButton { background-image: url("./assets/texturas/lava/columned-lava-rock_albedo.png"); }
+
+#alienButton { background-image: url("./assets/texturas/alien/alien-panels_albedo.png"); }
+
+#bogButton { background-image: url("./assets/texturas/bog/bog_albedo.png"); }
+
+#woodButton { background-image: url("./assets/texturas/wood/cheap_plywood1r_albedo.png"); }
+
+#forestButton { background-image: url("./assets/texturas/forest/forest_floor_albedo.png"); }
+
+#rustedButton { background-image: url("./assets/texturas/rusted/albedo.png"); }
+
+#antiqueButton { background-image: url("./assets/texturas/antique/antique-grate1-albedo.png"); }
+
+/* Botones lado derecho (torus2) - colores más oscuros para diferenciación */
+#iceButton2 { background-image: url("./assets/texturas/ice/iced-over-ground7-albedo.png"); }
+
+#marbleButton2 { background-image: url("./assets/texturas/marble/white-marble_albedo.png"); }
+
+#lavaButton2 { background-image: url("./assets/texturas/lava/columned-lava-rock_albedo.png"); }
+
+#alienButton2 { background-image: url("./assets/texturas/alien/alien-panels_albedo.png"); }
+
+#bogButton2 { background-image: url("./assets/texturas/bog/bog_albedo.png"); }
+
+#woodButton2 { background-image: url("./assets/texturas/wood/cheap_plywood1r_albedo.png"); }
+
+#forestButton2 { background-image: url("./assets/texturas/forest/forest_floor_albedo.png"); }
+
+#rustedButton2 { background-image: url("./assets/texturas/rusted/albedo.png"); }
+
+#antiqueButton2 { background-image: url("./assets/texturas/antique/antique-grate1-albedo.png"); }
+
+/* Botones parte superior (torus3) */
+#iceButton3 { background-image: url("./assets/texturas/ice/iced-over-ground7-albedo.png"); }
+#marbleButton3 { background-image: url("./assets/texturas/marble/white-marble_albedo.png"); }
+#lavaButton3 { background-image: url("./assets/texturas/lava/columned-lava-rock_albedo.png"); }
+#alienButton3 { background-image: url("./assets/texturas/alien/alien-panels_albedo.png"); }
+#bogButton3 { background-image: url("./assets/texturas/bog/bog_albedo.png"); }
+#woodButton3 { background-image: url("./assets/texturas/wood/cheap_plywood1r_albedo.png"); }
+#forestButton3 { background-image: url("./assets/texturas/forest/forest_floor_albedo.png"); }
+#rustedButton3 { background-image: url("./assets/texturas/rusted/albedo.png"); }
+#antiqueButton3 { background-image: url("./assets/texturas/antique/antique-grate1-albedo.png"); }
