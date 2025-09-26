@@ -285,7 +285,7 @@ function createMaterial() {
     color: new THREE.Color('#e6f3ff'), // Azul muy claro
     normalMap: texBog.normal,
     displacementMap: texBog.displacement,
-    displacementScale: 0.4,
+       displacementScale: 0.4,
     metalness: 0.3,
     roughness: 0.6,
     side: THREE.FrontSide,
@@ -305,7 +305,7 @@ function createMaterial() {
     displacementScale: 0.8,
     metalness: 0.3,
     roughness: 0.5,
-    side: THREE.FrontSide,
+       side: THREE.FrontSide,
   });
   
   materials.rusted = new THREE.MeshStandardMaterial({
@@ -525,8 +525,75 @@ window.addEventListener("keydown", (e) => {
 
 
 // ========================================
+// === PANEL DE INSTRUCCIONES INTERACTIVO ===
+// ========================================
+
+// Variables para el panel de instrucciones
+let instructionsPanel;
+let toggleInstructionsBtn;
+let isInstructionsCollapsed = false;
+
+// Inicializar panel de instrucciones
+function initInstructionsPanel() {
+  instructionsPanel = document.getElementById('instructionsPanel');
+  toggleInstructionsBtn = document.getElementById('toggleInstructions');
+  
+  if (instructionsPanel && toggleInstructionsBtn) {
+    // Event listener para toggle del panel
+    toggleInstructionsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleInstructionsPanel();
+    });
+    
+    // Event listener para click en el header
+    instructionsPanel.querySelector('.instructions-header').addEventListener('click', (e) => {
+      if (e.target !== toggleInstructionsBtn) {
+        toggleInstructionsPanel();
+      }
+    });
+    
+    // Auto-colapsar después de 10 segundos (más tiempo para leer)
+    setTimeout(() => {
+      if (!isInstructionsCollapsed) {
+        toggleInstructionsPanel();
+      }
+    }, 10000);
+    
+    console.log("📋 Panel de instrucciones inicializado");
+  }
+}
+
+// Toggle del panel de instrucciones
+function toggleInstructionsPanel() {
+  isInstructionsCollapsed = !isInstructionsCollapsed;
+  
+  if (isInstructionsCollapsed) {
+    instructionsPanel.classList.add('collapsed');
+    toggleInstructionsBtn.textContent = '?';
+    // Cambiar el título para que se vea como botón
+    const headerTitle = instructionsPanel.querySelector('.instructions-header h3');
+    if (headerTitle) {
+      headerTitle.textContent = 'Interacciones';
+    }
+  } else {
+    instructionsPanel.classList.remove('collapsed');
+    toggleInstructionsBtn.textContent = '×';
+    // Restaurar el título original
+    const headerTitle = instructionsPanel.querySelector('.instructions-header h3');
+    if (headerTitle) {
+      headerTitle.textContent = 'Interacciones';
+    }
+  }
+  
+  console.log("📋 Panel de instrucciones:", isInstructionsCollapsed ? "colapsado" : "expandido");
+}
+
+// ========================================
 // === INICIALIZACIÓN ===
 // ========================================
+
+// Inicializar panel de instrucciones
+initInstructionsPanel();
 
 // Iniciar el bucle de animación
 animate();

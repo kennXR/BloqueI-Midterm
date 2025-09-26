@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland:wght@400&display=swap');
+
 @font-face {
   font-family: "Formula";
   src:
@@ -9,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Formula", sans-serif;
+    font-family: "Iceland", sans-serif;
     text-transform: uppercase;
     color: rgb(207, 255, 255);
     overflow: hidden;
@@ -76,7 +78,7 @@ footer {
     height: 5vh;
     cursor: pointer;
     border: none;
-    font-family: "Formula", sans-serif;
+    font-family: "Iceland", sans-serif;
     text-transform: uppercase;
     font-size: 1.2vh; /* Texto más pequeño */
     font-weight: normal; /* Menos bold */
@@ -184,3 +186,151 @@ footer {
 #forestButton3 { background-image: url("./assets/texturas/forest/forest_floor_albedo.png"); }
 #rustedButton3 { background-image: url("./assets/texturas/rusted/albedo.png"); }
 #antiqueButton3 { background-image: url("./assets/texturas/antique/antique-grate1-albedo.png"); }
+
+/* Panel de instrucciones interactivas */
+.instructions-panel {
+    position: absolute;
+    top: 12vh;
+    right: 2vh;
+    width: 25vw;
+    min-width: 300px;
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 1.5vh;
+    border: 2px solid rgba(207, 255, 255, 0.4);
+    z-index: 2000;
+    transition: all 0.3s ease;
+    box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.6), 0 0 2vh rgba(207, 255, 255, 0.1);
+}
+
+.instructions-panel.collapsed {
+    width: auto;
+    min-width: auto;
+    max-width: none;
+    height: auto;
+    padding: 0;
+    transform: none;
+    opacity: 0.9;
+    border: 2px solid rgba(207, 255, 255, 0.6);
+    box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.8), 0 0 3vh rgba(207, 255, 255, 0.2);
+}
+
+.instructions-panel.collapsed .instructions-content {
+    display: none;
+}
+
+.instructions-panel.collapsed .instructions-header {
+    border-bottom: none;
+    padding: 1vh 2vh;
+    border-radius: 1.5vh;
+    background: rgba(207, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.instructions-panel.collapsed .instructions-header:hover {
+    background: rgba(207, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+.instructions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vh;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.instructions-header h3 {
+    font-size: 2.2vh;
+    font-weight: normal;
+    margin: 0;
+    color: rgb(207, 255, 255);
+    text-shadow: 0 0 1vh rgba(207, 255, 255, 0.3);
+}
+
+.toggle-btn {
+    background: rgba(207, 255, 255, 0.1);
+    border: 1px solid rgba(207, 255, 255, 0.3);
+    color: rgb(207, 255, 255);
+    font-size: 2.8vh;
+    cursor: pointer;
+    padding: 0;
+    width: 3.5vh;
+    height: 3.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 0.5vh rgba(207, 255, 255, 0.5);
+}
+
+.toggle-btn:hover {
+    background: rgba(207, 255, 255, 0.2);
+    border: 1px solid rgba(207, 255, 255, 0.6);
+    transform: rotate(90deg);
+    box-shadow: 0 0 1vh rgba(207, 255, 255, 0.3);
+}
+
+.instructions-content {
+    padding: 1.5vh;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5vh;
+    padding: 1vh;
+    border-radius: 0.5vh;
+    transition: all 0.3s ease;
+}
+
+.instruction-item:hover {
+    background: rgba(207, 255, 255, 0.1);
+    transform: translateX(0.5vh);
+    border-left: 3px solid rgba(207, 255, 255, 0.5);
+    box-shadow: 0 0.2vh 1vh rgba(207, 255, 255, 0.1);
+}
+
+.instruction-item:last-child {
+    margin-bottom: 0;
+}
+
+.instruction-icon {
+    font-size: 2.5vh;
+    margin-right: 1.5vh;
+    min-width: 3vh;
+    text-align: center;
+    filter: drop-shadow(0 0 0.5vh rgba(207, 255, 255, 0.3));
+}
+
+.instruction-text {
+    font-size: 1.5vh;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 0 0.5vh rgba(255, 255, 255, 0.2);
+}
+
+.instruction-text strong {
+    color: rgb(207, 255, 255);
+    font-weight: normal;
+    text-shadow: 0 0 1vh rgba(207, 255, 255, 0.4);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .instructions-panel {
+        width: 90vw;
+        right: 5vw;
+        left: 5vw;
+    }
+    
+    .instructions-panel.collapsed {
+        transform: translateY(calc(-100% + 6vh));
+    }
+}
+
