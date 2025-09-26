@@ -490,6 +490,41 @@ textureTypes.forEach(texture => {
 });
 
 // ========================================
+// === INTERACCIÓN CON TECLADO (WIRE-FRAME) ===
+// ========================================
+
+// Variables de estado para wireframe de cada torus
+let isWireframeTorus1 = false;
+let isWireframeTorus2 = false;
+let isWireframeTorus3 = false;
+
+window.addEventListener("keydown", (e) => {
+  const key = e.key.toLowerCase();
+  
+  // Tecla W - Toggle wireframe en torus1
+  if (key === "w") {
+    isWireframeTorus1 = !isWireframeTorus1;
+    torus1.material.wireframe = isWireframeTorus1;
+    console.log("🔄 Torus1 Wireframe:", isWireframeTorus1);
+  }
+  
+  // Tecla E - Toggle wireframe en torus2
+  if (key === "e") {
+    isWireframeTorus2 = !isWireframeTorus2;
+    torus2.material.wireframe = isWireframeTorus2;
+    console.log("🔄 Torus2 Wireframe:", isWireframeTorus2);
+  }
+  
+  // Tecla R - Toggle wireframe en torus3
+  if (key === "r") {
+    isWireframeTorus3 = !isWireframeTorus3;
+    torus3.material.wireframe = isWireframeTorus3;
+    console.log("🔄 Torus3 Wireframe:", isWireframeTorus3);
+  }
+});
+
+
+// ========================================
 // === INICIALIZACIÓN ===
 // ========================================
 
